@@ -1,11 +1,12 @@
 {
-  "id": "/Todo---App/index.html",
   "name": "Productivity App",
   "short_name": "Todo",
-  "start_url": "/Todo---App/index.html",
+  "start_url": "/Todo---App/",
+  "scope": "/Todo---App/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "Images/android-chrome-192x192.png",
