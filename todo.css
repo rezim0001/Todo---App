@@ -1,0 +1,286 @@
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- LAYOUT ---------- */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f4f6f8, #e9eef5);
+  color: #222;
+  padding: 20px;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #eee;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+#themeToggle {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  max-width: 900px;
+  margin: 25px auto;
+}
+
+/* ---------- DASHBOARD ---------- */
+.dashboard {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.dashboard p {
+  margin: 6px 0;
+}
+
+.progressBar {
+  height: 12px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ffcc, #00ffa2);
+  transition: width 0.4s ease;
+}
+
+/* ---------- INPUTS ---------- */
+.input-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  flex: 1 1 160px;
+  background: white;
+}
+
+body.dark input,
+body.dark select {
+  background: #1f1f1f;
+  color: #eee;
+  border-color: #444;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.25);
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card.new {
+  animation: fadeSlide 0.35s ease;
+}
+
+body.dark .card {
+  background: rgba(30,30,30,0.8);
+}
+
+.card span {
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* ---------- PRIORITY COLORS ---------- */
+.priority-low { border-left: 6px solid #4caf50; }
+.priority-medium { border-left: 6px solid #ff9800; }
+.priority-high { border-left: 6px solid #f44336; }
+
+/* Keep priority visible even when completed */
+.completed.priority-low,
+.completed.priority-medium,
+.completed.priority-high {
+  opacity: 0.75;
+}
+
+/* ---------- ICON BUTTONS ---------- */
+.toggle,
+.delete {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.toggle {
+  background: linear-gradient(135deg, #00c853, #64dd17);
+}
+
+.delete {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* ---------- EMPTY STATE ---------- */
+#emptyState {
+  text-align: center;
+  opacity: 0.6;
+  margin: 15px 0;
+  display: none;
+}
+
+/* ---------- STATS BUTTON ---------- */
+.stats-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  font-size: 1.3rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+}
+
+body.dark .modal-content {
+  background: #222;
+  color: #eee;
+}
+
+/* ---------- FOOTER ---------- */
+.app-footer {
+  text-align: center;
+  margin-top: 30px;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .toggle,
+  .delete {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

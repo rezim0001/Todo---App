@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>⚡ Productivity App</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#667eea" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="todo.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="data:," />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <h1>⚡ Productivity App</h1>
+      <button id="themeToggle" type="button" aria-label="Toggle dark mode">
+        🌙 Dark Mode
+      </button>
+    </header>
+
+    <main>
+      <!-- DASHBOARD -->
+      <section class="dashboard">
+        <h2>📊 Dashboard</h2>
+        <p>Total Tasks: <span id="totalTodos">0</span></p>
+        <p>Completed: <span id="doneTodos">0</span></p>
+        <div class="progressBar">
+          <div id="progressFill"></div>
+        </div>
+      </section>
+
+      <!-- TODOS -->
+      <section>
+        <h2>📝 Todos</h2>
+
+        <div class="input-container">
+          <input
+            id="todoInput"
+            placeholder="Task name"
+            aria-label="Task name"
+          />
+
+          <input type="date" id="todoDate" aria-label="Due date" />
+
+          <select id="todoCategory" aria-label="Task category">
+            <option>Work</option>
+            <option>Study</option>
+            <option>Personal</option>
+            <option>Health</option>
+          </select>
+
+          <select id="todoPriority" aria-label="Task priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <button id="addTodoBtn" type="button">Add</button>
+        </div>
+
+        <input
+          id="searchInput"
+          placeholder="🔍 Search tasks"
+          aria-label="Search tasks"
+        />
+
+        <p id="emptyState">🎉 No tasks yet. Add your first task!</p>
+
+        <div class="todo-container"></div>
+      </section>
+
+      <!-- HABITS -->
+      <section>
+        <h2>🔥 Habit Tracker</h2>
+
+        <div class="input-container">
+          <input
+            id="habitInput"
+            placeholder="New habit"
+            aria-label="New habit"
+          />
+          <button id="addHabitBtn" type="button">Add Habit</button>
+        </div>
+
+        <div class="habit-container"></div>
+      </section>
+    </main>
+
+    <!-- STATS BUTTON -->
+    <button id="statsBtn" class="stats-btn" aria-label="View statistics">
+      📊
+    </button>
+
+    <!-- STATS MODAL -->
+    <div id="statsModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>📊 Task Stats</h3>
+        <p>Total: <span id="statTotal"></span></p>
+        <p>Done: <span id="statDone"></span></p>
+        <p>Pending: <span id="statPending"></span></p>
+        <button id="closeStats" type="button">Close</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">© <span id="year"></span> Rezim Titoria</footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- App Script -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script src="todo.js" defer></script>
+
+    <!-- Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js");
+      }
+    </script>
+  </body>
+</html>
