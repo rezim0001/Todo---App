@@ -1,12 +1,11 @@
 {
+  "id": "/Todo---App/index.html",
   "name": "Productivity App",
   "short_name": "Todo",
-  "description": "A simple Todo and Habit Tracker application",
-  "start_url": "./todo.html",
+  "start_url": "/Todo---App/index.html",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "Images/android-chrome-192x192.png",
